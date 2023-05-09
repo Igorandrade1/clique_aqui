@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>João perdeu as pregas hoje?</title>
+	<style>
+        button {
+            width: 100%;
+            max-width: 200px;
+            height: auto;
+        }
+
+		#nao {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			transition: all 0.3s ease-out;
+		}
+		#nao:hover {
+			cursor: pointer;
+		}
+
+		body {
+			background-color: #f0f0f0;
+			font-family: Arial, sans-serif;
+			font-size: 16px;
+			margin: 0;
+			padding: 0;
+		}
+
+		.container {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			height: 100vh;
+		}
+
+		button {
+			background-color: #4CAF50;
+			border: none;
+			color: white;
+			padding: 10px 20px;
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+			font-size: 16px;
+			margin: 10px;
+			cursor: pointer;
+			border-radius: 5px;
+			transition: all 0.3s ease-out;
+		}
+
+		button:hover {
+			background-color: #3e8e41;
+		}
+
+		#nao {
+			background-color: #f44336;
+		}
+
+		#nao:hover {
+			background-color: #d32f2f;
+		}
+
+        @media only screen and (max-width: 600px) {
+            body {
+                font-size: 14px;
+            }
+        }
+	</style>
+</head>
+<body>
+    <div class="container">
+        <h1>Role hoje?</h1>
+        <button id="sim">Sim</button>
+        <button id="nao">Nao</button>
+    </div>
+	<script>
+		const naoButton = document.getElementById("nao");
+
+		// Adiciona o evento de movimento do mouse ou dedo na tela
+		document.addEventListener("mousemove", handleMouseMove);
+		document.addEventListener("touchmove", handleMouseMove);
+
+		function handleMouseMove(event) {
+			const x = event.clientX || event.touches[0].clientX;
+			const y = event.clientY || event.touches[0].clientY;
+			const buttonWidth = naoButton.offsetWidth;
+			const buttonHeight = naoButton.offsetHeight;
+			const maxX = window.innerWidth - buttonWidth;
+			const maxY = window.innerHeight - buttonHeight;
+			const newX = Math.floor(Math.random() * (maxX + 1));
+			const newY = Math.floor(Math.random() * (maxY + 1));
+			const distance = Math.sqrt((x - naoButton.offsetLeft - buttonWidth / 2) ** 2 + (y - naoButton.offsetTop - buttonHeight / 2) ** 2);
+			if (distance < 150) {
+				naoButton.style.left = newX + "px";
+				naoButton.style.top = newY + "px";
+			}
+		}
+	</script>
+</body>
+</html>
