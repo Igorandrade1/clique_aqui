@@ -97,20 +97,26 @@
 		document.addEventListener("touchmove", handleMouseMove);
 
 		function handleMouseMove(event) {
-			const x = event.clientX || event.touches[0].clientX;
-			const y = event.clientY || event.touches[0].clientY;
-			const buttonWidth = naoButton.offsetWidth;
-			const buttonHeight = naoButton.offsetHeight;
-			const maxX = window.innerWidth - buttonWidth;
-			const maxY = window.innerHeight - buttonHeight;
-			const newX = Math.floor(Math.random() * (maxX + 1));
-			const newY = Math.floor(Math.random() * (maxY + 1));
-			const distance = Math.sqrt((x - naoButton.offsetLeft - buttonWidth / 2) ** 2 + (y - naoButton.offsetTop - buttonHeight / 2) ** 2);
-			if (distance < 150) {
-				naoButton.style.left = newX + "px";
-				naoButton.style.top = newY + "px";
-			}
-		}
+            const x = event.clientX || event.touches[0].clientX;
+            const y = event.clientY || event.touches[0].clientY;
+            const buttonWidth = naoButton.offsetWidth;
+            const buttonHeight = naoButton.offsetHeight;
+            const maxX = window.innerWidth - buttonWidth;
+            const maxY = window.innerHeight - buttonHeight;
+            const newX = Math.floor(Math.random() * (maxX + 1));
+            const newY = Math.floor(Math.random() * (maxY + 1));
+
+            let maxDistance = 100; // Valor padrão
+            if (window.innerWidth <= 600) {
+                maxDistance = 50; // Valor menor para dispositivos móveis
+            }
+
+            const distance = Math.sqrt((x - naoButton.offsetLeft - buttonWidth / 2) ** 2 + (y - naoButton.offsetTop - buttonHeight / 2) ** 2);
+            if (distance < maxDistance) {
+                naoButton.style.left = newX + "px";
+                naoButton.style.top = newY + "px";
+            }
+        }
 	</script>
 </body>
 </html>
