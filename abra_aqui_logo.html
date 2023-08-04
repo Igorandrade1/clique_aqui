@@ -70,11 +70,12 @@
             }
 
             .container {
-                flex-direction: column-reverse; /* Inverter a ordem dos elementos no contêiner */
+                flex-direction: column; /* Deixar a ordem padrão no mobile */
             }
-            
+
             #nao {
                 margin-top: 10px;
+                order: 2;
             }
         }
 	</style>
@@ -82,9 +83,9 @@
 <body>
     <div class="container">
         <h1>VAMO BEIJA NA BOCA VIDOCA? RSRSRSRSR ? RSRSRSRS </h1>
+        <div id="agradecimento" style="display: none;">RSRSRSRSRS OPA QUANDO ? RSRSRSRS </div>
         <button id="sim">Sim</button>
         <button id="nao">Nao</button>
-        <div id="agradecimento" style="display: none;">RSRSRSRSRS OPA QUANDO ? RSRSRSRS </div>
     </div>
 	<script>
         const simButton = document.getElementById("sim");
